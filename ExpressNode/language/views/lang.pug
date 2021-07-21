@@ -1,0 +1,24 @@
+doctype html
+html 
+    head 
+        title lang
+    body 
+        h1 
+           a(href="/lang") Server Side Javascript
+        h2 Welcome 
+        h3 Hello, nodejs
+        ul
+            for file in files
+                li
+                    a(href=`/lang/${file}`)=file
+        h2=title
+        h3=description
+
+        a(href="/lang/new") new
+
+        form(action="/lang" method="post")
+            input(type="text" name="title" placeholder="title")
+            br
+            textarea(name="description", cols="20" rows="5" placeholder="description")
+            br
+            input(type="submit" value="입력완료")   

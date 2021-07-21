@@ -1,0 +1,238 @@
+1. javascript기본문법 +Es6(arrow function)
+2. nodejs 문법,  프로젝트 제작....
+-------------------------------------------------------------
+1. internet: 
+1) 인터넷의 시초: 미국국방부의 arpanet이 시초
+2) 인터넷 시작연도:1969년 
+
+2. 크롬의 자바스크립트 엔진: v8 엔진
+우리가 만든 html문서를 해석해서 브라우저에 뿌려주는 애를 '엔진'(해석기)
+-일반적으로 html에는 2개의 엔진이 필요하다.( html엔진, javascript엔진)
+
+
+test.html
+
+<html>
+<title>
+<body>
+<script>alert('hi')</script>
+  <h1> test </h1>
+   <h2>test2</h2>
+</body>
+</html>
+-nodejs의 기반이 v8엔진 기반으로 만들어짐.
+
+- nodejs: 기존의 브라우저에서 작동되던 자바스크립트를 pc나 서버에서 실행할 수 있게 하는 프레임워크
+
+* nodejs.org  / npmjs.org   /expressjs.org
+* javascript: ecmascript
+* ECMA: javascript 관리 기관 ( 6, 12)
+* ECMA 6 ( ECMA2021)
+
+material icon theme
+<< 웹에서 자바스크립트의 위치
+1. html문서내에 <script>태그로 직접 기술
+2. 외부파일로 작성해서  <script type="text/javascript" src="js/test.js"/>
+---------------------------------------------------------------------------------------------
+<<자바스크립트 문법
+1. 인터프리터 언어로 명령문을 순차적으로 실행
+2. 주석 : //    /*  */
+3. 강형언어(strongly typed language)  /약형언어(weakly typed lanauge)
+    자바스크립트: 약형언어
+     var name="kim";  
+     var age=30;    (es6:   let, const)
+4. 데이터타입
+  1) 기본타입:숫자, 문자열, 논리, null , defined
+  2) 참조타입: 배열, 함수, 객체
+
+*** 자바스립트========함수이다!!!!!
+     함수==========값  이다!!!!!!
+
+    int num=10;
+         변수=값;
+         변수= 함수;
+
+가) null: 값이 없음을 말한다.
+            명시적으로 값이 비어있음을 설정
+             타입: object
+            var test=null;
+           typeof(test):  object
+
+나) undefined: 변수를 선언하고 값을 지정하지 않았을 때
+               var temp;
+               console.log(temp) ;  <==undefined
+                typeof(temp);  <==== undefined
+
+== :값만 일치  10=="10" (true)
+===: 값하고 타입까지 일치해야 해 10==="10"  (false) 
+null===undefined:    false
+
+ 다)  ||   or   :앞이 값이 참이면 앞의 값 반환
+                    앞의 값이 거짓이면 뒤의 값 반환   
+ 라)  &&  and  : 앞의 값이 참이면 뒤의 값 반환
+                         앞의 값이 거짓이면 앞의 값 반환
+ 마) !
+---------------------------------------------------------------
+<<변수의 유효범위 (scope)
+  test.java
+  
+  1  for(var i=0;i<10;i++) {
+  2      System.out.println(i);
+3    }
+4     System.out.println(i);
+
+* 자바:  i의 스코프는 블럭이다.
+------------------------------------------------------------
+test.js 
+1  for(var i=0;i<10;i++) {
+  2      System.out.println(i);
+3    }
+4     System.out.println(i);
+* 자바스크립트: i의 스코프는 함수이다.
+
+
+1. var: 함수단위의 scope
+2. let(es6) :블럭단위의 scope (===자바라고 생각해도 됨)
+3. const(es6):블럭단위의 scope
+
+  var name='kim';
+  var name=10;
+ 
+   let name='lee';
+  name=20;
+
+   var global=1;  //전역변수
+   function local() {
+     var global=2;  //지역변수
+     
+}
+     local();
+    console.log(global) ; //   1
+-------------------------------------------------------
+  var global=1;  //전역변수
+   function local() {
+       global=2;  //전역변수
+     
+}
+     local();
+    console.log(global) ; //   2
+
+
+5. 배열(array)   test4.js
+: 하나의 변수에 여러개의 값을 지정하는 데이터구조
+1) var score=new Array();
+2) var score=[1,2,3,4,5];  (* 배열: [ ]. * 객체: { })
+3) 배열요소추가: push()  /배열요소 삭제: pop()  /slice  / delete
+4) 반복문:  for-in   / for - of /   forEach(): 배열의 함수 (사용법:  배열이름.forEach())
+---------------------------------------------------------------------------------------------------------
+<< 객체 (Object) **********
+1. 생성방법
+1) var user={
+            kim:10,
+            lee:8,
+            park: 100
+}
+//자바스크립트: prototype baseed language라고 한다.
+     
+<<배열요소 추가 삭제
+1. push: 맨 뒤에 추가
+2. pop: 맨 뒤의 것 가져오기
+3. unshift: 맨 앞에 추가
+4. shift: 맨 앞에 것 가져오기
+5. slice: 중간에 삽입 , 가져오기
+6. delete: 삭제
+
+------------------------------------------------------------------------
+<<함수(function)
+자바스크립트====함수이다.
+함수===값이다.
+변수=함수를 할당 할 수 있다.
+
+1.  함수
+1) 함수만들기
+2) 만든 함수를 호출해줘야 해
+
+
+함수: 특정기능을 묶어서 재사용하고 싶을 때 작성하는 것
+     function  함수이름(매개변수.......) {
+      실행할 명령어;;;;;
+      return ........    
+}
+
+함수이름();
+
+2. 함수작성
+1) 선언적 함수로 만들기
+function add(function()){
+console.log('A')
+}
+
+2) 익명함수로 만들기
+let add=function(){
+   console.log('B');
+}
+
+함수==값
+* 자바스크립트는 prototype based language이다.
+* 자바스크립트 함수는 일급객체로 다룬다(first class)
+  ** 일급객체: 변수에 할당가능하다.
+   ** 매개변수로 함수를 넘길 수  있다.
+   ** 리턴값으로 함수를 넘길수 있다.
+
+* 객체의 요소에 객체, 함수도 넣을 수 있음
+--------------------------------------------------------------
+<<es6
+1. let(블럭단위의 scope), const (블럭단위의 scope: 상수)
+2. arrow function(화살표함수)
+function add(x,y) {
+    return x+y;
+    }
+
+    
+let add=(x,y) =>{
+    return x+y;
+}
+
+function sub() {
+    console.log('test');
+}
+
+//========>
+const sub=()=>{
+    console.log('test');
+}
+3. 문자열템플릿
+System.out.println("a="+a+"이고"+)
+console.log("a="+a+"이고"+)
+console.log(`a=${a}이고 b=${b}입니다`);
+grave accent
+--------------------------------------------------------------------
+<<콜백함수(callback함수)
+1. 비동기시에 사용 (비동기 /동기: async/ sync)
+2. (익명함수를) 매개변수로 전달되는 함수를 콜백함수라고 한다.
+--------------------------------------------------------------------
+<<node
+1. 서버스크립트 언어
+2. 싱글스레드  
+3. 이벤트기반의 이벤트루프를 사용한다.
+4. non-blocking I/O
+
+웹에서의자바스크립트: 이벤트 , 이벤트핸들러
+이벤트 루프기반의 언어
+
+<<모듈(module)
+1) node에서 제공하는 기본모듈
+2) 내가 만드는 모듈
+3) 다른 사람들이 만들어 놓은 모듈
+( npmjs.com)
+
+==> 콜백함수:  비동기에서 사용하지
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,14 @@
+doctype html
+html 
+    head 
+        title login form
+    body 
+        h3 login 
+        form(action="/login" method="post")
+            label(for="idInput") 아이디 
+            input(type="text" name="uid" id="idInput")
+            br
+            label(for="pwInput") 비밀번호
+            input(type="text" name="upw" id="pwInput")
+            br
+            input(type="submit" value="Login")   
