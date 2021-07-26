@@ -1,0 +1,29 @@
+doctype html 
+html
+    head
+        title memo
+    body 
+        div
+            div    
+                h3 개인메모장
+            div 
+                form(action="/memo" method="post" enctype="multipart/form-data")
+                    p 
+                        label(for="nameInput") 작성자
+                        input(type="text" name="name" id = "nameInput")
+                    p 
+                        label(for="dateInput") 작성일시
+                        input(type="text" name="date" id = "dateInput")
+                    p 
+                        label(for="contentInput") 내용
+                        input(type="text" name="content" id = "contentInput")
+                    p
+                        input(type="file" name="userfile")
+                    p 
+                        input(type="submit" value="저장")
+
+                form(action="/view-memo" method="get")
+                    input(type="submit" value="메모보기")
+                p
+                form(action="/" method="get")
+                    input(type="submit" value="닫기")

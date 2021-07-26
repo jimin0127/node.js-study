@@ -1,0 +1,16 @@
+doctype html 
+html 
+    head 
+        title list
+    body 
+        h1 list
+        table
+            for person in list
+                tr 
+                    td=person.id
+                    td=person.name
+                    td=person.email 
+                    td=person.passwd
+                    td
+                        a(href=`/edit/${person.id}`) 수정 &nbsp;
+                        a(href=`/delete/${person.id}`) 삭제 

@@ -1,0 +1,109 @@
+
+0. <<cmd에서 몽고디비 연결
+
+<<1. vscode의 terminal에서 몽고디비연결
+
+1. 몽고디비 서버 연결: mongod
+2. 몽고디비 쉘 : mongo
+
+3. node에서 mongodo 사용할 수있는 설정: package.json
+"db": "c:\\mongodb\\bin\\mongod --dbpath=c:\\mongodb\\data",
+    "dbshell": "c:\\mongodb\\bin\\mongo"
+
+npm run db 
+npm run dbshell
+
+RDBMS               mongodb
+db:                         db
+table                      collection
+record(row)            document
+column                  {key:value}
+
+* mongodb: schema안만들어.. (create table login(.....)
+-------------------------------------------------------------------------------------------------
+<< vscode에서 몽고디비 연결
+1번이 생략
+2. 몽고디비 쉘 : mongo
+
+
+-------------------------------------------------------------------------------------------------
+
+<<mongoose를 사용하여 몽고디비 연결
+*mongoose: node와 mongodb를 연결하기 위한 ODM 라이브러리(object data mapping)
+객체                                                db
+
+1.  몽고디비 연결
+
+2. 스키마생성(   create table ......) 설계도  / 클래스  
+
+3. 스키마를 이용해서 컬렉션 생성   (실제 테이블을 만든다   /객체)
+const Test=mongoose.model('aa',test);
+ //test라는 스키마를 사용해서 aa라는 테이블을 만듦. aa를  Test가 가리키게 함
+//몽고디비에 저장되는 컬렉션이름은 항상 복수형임(aas)
+
+
+4. insert /update /delete/ select
+
+//몽구스 세팅
+
+const express=require('express');
+const mongoose=require('mongoose');
+
+//1. 접속주소와 db이름 세팅
+mongoose.connect('mongodb://localhost:27017/data',
+                        {useNewUrlParser:true})
+
+ //2. db 연결
+ const db=mongoose.connection;
+
+ //3. event 이용하여 접속
+
+ db.on('err',()=>{
+     console.log('connection failed');
+ })
+ db.once('open',()=>{
+     console.log('connected');
+ })
+const app=express();
+app.use(express.urlencoded({ extended: true }))
+
+
+app.get('/',(req, res)=>{
+    res.send('hi')
+})
+
+app.listen(3000,()=>{
+    console.log('Express server running....')
+})
+
+
+const test=mongoose.Schema({
+name:{
+type:String,
+required:true},
+},
+age:{
+type:number,
+min:20,
+max:50
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
