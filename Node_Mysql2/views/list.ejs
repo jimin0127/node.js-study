@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible">
+        <title>Document</title>
+    </head>
+    <body>
+
+        <h3>List</h3>
+        <table style="border: 1px black solid;">
+            <tr>
+                <td>id</td>
+                <td>name</td>
+                <td>emp_numebr</td>
+                <td>email</td>
+                <td>reg_date</td>
+            </tr>
+        <% lists.forEach((list) => { %>
+            <tr>
+                <td><a href="/read/<%=list.id%>"><%= list.id %></a></td>
+                <td><%= list.name %></td>
+                <td><%= list.emp_number %></td>
+                <td><%= list.email %></td>
+                <td><%= list.reg_date %></td>
+            </tr>
+        <%})%>
+        </ul>
+    </body>
+</html>

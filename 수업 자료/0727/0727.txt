@@ -1,0 +1,42 @@
+<<mysql +ejs(template engine)
+* pug: 들여쓰기
+* ejs: jsp: html코드안에 자바가 들어가는 거지
+* ejs:  html코드안에 자바스크립트 코드가 들어가는 거야 <%=    %>
+
+app.get('/new',(req,res)=>{
+res.render('new');
+})
+
+//reg_date date;
+9:22  => 12:22 --> asia time으로 변경해서 insert
+
+<<추가 모듈
+mysql
+ejs
+date-format
+moment
+moment-timezone
+
+rows [{kim, }, {lee},{park}]
+/read/3
+/read/2
+/read/1
+
+/edit/:id
+/delete/:id
+
+express : middleware (use) /router
+
+
+* 웹 프레임워크: MVC   (model /view /control
+
+*ejs에 공통되는 부분 include
+<% -include('./layaout/header') %>
+
+
+
+
+
+
+
+

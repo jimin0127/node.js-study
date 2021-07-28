@@ -1,0 +1,56 @@
+
+//회원 수정하기
+app.put('/edit/:id',(req, res)=>{
+    const paramId=req.params.id;
+    const email=req.body.user_email;
+    const password=req.body.user_password;
+    console.log('email'+email);
+    
+    let pass;
+   // read: 'select * from new where id=?',
+   conn.query(sql.read,[paramId],(err,rows)=>{
+        if(password!=rows[0].user_password) {
+                 res.render('check',{title:'비밀번호 체크',pass:false});
+        }else {
+             // update:'update new set user_email=? where id=? ' 
+             conn.query(sql.update,[email, paramId],(err,result)=>{
+                 if(err){
+                     console.log(err);
+                 }
+                 else {
+                     res.redirect('/');
+                 }
+             }) 
+        }
+   })
+
+})
+--------------------------------------------------------------------------------------
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('./layout/header') %>
+  </head>
+  <body>
+    <%- include('./layout/nav') %>
+
+    <div class="contact contact-index">
+      <h2>check</h2>
+      <%  if(pass==false){  %>
+        <script>
+          alert('비밀번호가 틀립니다');
+          history.go(-1);
+        </script>
+      <%
+      }
+      %>
+    
+      </div>    
+    <div style='padding:20px;'>
+        <%- include('./layout/footer') %>
+
+    </div>
+   
+  </body>
+</html>
