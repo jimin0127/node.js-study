@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible">
+        <title>Document</title>
+    </head>
+    <body>
+
+        <h3>List</h3>
+        <table style="border: 1px black solid;">
+            <tr>
+                <td>id</td>
+                <td>file_name</td>
+            </tr>
+        <% rows.forEach((list) => { %>
+            <tr>
+                <td><%= list.id %></td>
+               <td> <a href="/down/<%= list.file_name%>"><%= list.file_name %></a></td>
+               <td><a href="/edit/<%= list.id%>">수정</a>
+                <a href="/delete/<%= list.id%>">삭제</a></td>
+            </tr>
+        <%})%>
+        </ul>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> 새 글 작성</h1>
+    <form action="/write" method="post" enctype="multipart/form-data">
+        작성자 : <input type="text" name="user_id" value="<%= user%>"><p>
+        제목 : <input type="text" name="title"><p>
+        내용 : <input type="text" name="content"><p>
+        패스워드 : <input type="password" name="passwd"><p>
+        파일 : <input type="file" name="userfile"><p>
+        <input type="submit" value="저장">
+    </form>
+</body>
+</html>

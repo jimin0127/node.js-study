@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border='1'>
+        <tr>
+            <td>작성자</td>
+            <td><%= row.name %></td>
+        </tr>
+        <tr>
+            <td>제목</td>
+            <td><%= row.title %></td>
+        </tr>
+        <tr>
+            <td>내용</td>
+            <td><%= row.content %></td>
+        </tr>
+        <tr>
+            <td>사진</td>
+            <td><img src="..\<%= row.file_path %>"></td>
+        </tr>
+        <tr>
+            <td>수정일</td>
+            <td><%= row.modidate %></td>
+        </tr>
+        <tr>
+            <td>등록일</td>
+            <td><%= row.regdate%></td>
+        </tr>
+    </table>
+
+    <button><a href="/edit/<%= row.id %>">수정</a></button>
+    <button><a href="/delete/<%= row.id %>?_method=DELETE">삭제</a></button>
+
+</body>
+</html>

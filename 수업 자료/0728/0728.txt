@@ -1,0 +1,138 @@
+<<파일 디비에 저장
+1. 파일을 업로드 ->서버에 올라감 
+                         테이블에도 저장
+2. 파일을 다운로드 하기
+
+---------------------------------------------------------------------
+<<파일을 서버에 업로드하며   file_upload 프로젝트
+1. 모듈 하나 추가하고 설치 (destination:     /filename : )
+multer
+2. file_upload  (id(auto_increment), file_name )
+3. 파일업로드까지 완성
+const express=require('express');
+var multer  = require('multer')
+var fs=require('fs');
+var mysql=require('mysql');
+
+
+var _storage = multer.diskStorage({
+  destination: function (req, file, cb) {//txt: uploads/texts로 업로드, img: uploads/img로 업로드
+if(file.mimetype=="image/jpeg" || file.mimetype=="image/png") {
+console.log('그림파일');
+ cb(null, 'uploads/img')
+} else {
+console.log('텍스트파일');
+cb(null,'uploads/texts');
+}
+   
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+    cb(null, file.originalname)
+  }
+})
+1)  서버에 업로드  
+2)  테이블에 파일이름이 저장
+
+<<이미지를 디비에 저장 /불러오기
+create table img(
+기존:img_name blob, 
+오래전부터: img_name  varchar    이미지가 들어있는 경로와 파일이름
+
+ 출력: ejs에서 <img....>
+
+res.render()
+res.send()
+res.download():파일다운로드
+
+res.download('uploads/texts/0722.txt')
+
+app.get('/',(req,res) =>{req, res: 객체
+}
+--------------------------------------------------------------------------------------
+-정적인 파일(html, css,javascript)
+1) node: public/html <--- html만 저장
+                      /css <===css만 저장
+                      /javascript <==간단한 자스.
+                aaa/1.html
+http://localhost:3000/1.html
+public/html/3.html
+
+app.use(express.static('public'))
+http://localhost:3000/html/3.html
+
+
+
+* 나는 upload를 접근가능하게 하겠다.
+app.use(express.static('upload'))
+http://localhost:3000/
+
+app.use(express.static('public'))
+** uploads/img/3.jpg
+1) public/uploads/img/3.jpg
+http://localhost:3000/uploads/img/3.jpg
+
+2) uploads/img/3.jpg
+app.use(express.static('uploads'))
+http://localhost:3000/img/3.jpg
+
+ejs: <img src=......>
+
+<img src="/uploads/images/..........
+
+//나는 aaa폴더를 root로 지정하겠다.
+
+2) spring:resources /
+------------------------------------------------------------------------------
+dbconn.js
+    var conn = mysql.createConnection({
+        host     : 'localhost',
+        user     : 'test',
+        password : '1111',
+        database : 'testdb',
+        port:3307
+      });
+
+
+
+require('/dbconn)
+----------------------------------------------------------------------
+<<게시판
+1. 글쓰기: 로그인된 사람만 글쓰기 ( 회원이 아닌 사람은 회원가입으로 )
+
+board
+id, name, title, content, regdate,modidate,passwd, hit, file_name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,29 @@
+<form action="/search" method="post" style="text-align: center;">
+                <select name='sel'>
+                    <option value='title' selected>title</option>
+                    <option value='writer'>writer</option>
+                    <option value='content1'>content1</option>
+                </select>
+                <input type="text" name="txt" />&nbsp;
+                <input type="submit" value="검색" />
+          
+  
+            </form>
+-------------------------------------------------------------------------
+search: 'select * from board where ? like ?'
+---------------------------------------------------------------------------------------
+ //검색 search: 'select * from board where ? like ?'
+    app.post('/search',(req,res)=>{
+        const _sel=req.body.sel;
+        const txt=req.body.txt;
+        console.log(_sel,txt)
+     conn.query(sql.search,[_sel,'%'+txt+'%'],(err,docs)=>{
+         
+         if(err){
+             console.log(err);return;
+         }
+         console.log("docs",docs);
+         res.send(docs)
+     })
+    })
+        

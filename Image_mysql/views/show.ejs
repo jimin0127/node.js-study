@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible">
+        <title>Document</title>
+    </head>
+    <body>
+
+        <h3>List</h3>
+        <table style="border: 1px black solid;">
+            <tr>
+                <td>id</td>
+                <td>이미지</td>
+                <td>file_name</td>
+                <td>file_original_name</td>
+                <td>..</td>
+            </tr>
+        <% rows.forEach((list) => { %>
+            <tr>
+                <td><%= list.id %></td>
+                <td><img src="..\<%= list.filename%>"></td>
+               <td> <a href="/down/<%= list.filename%>"><%= list.filename %></a></td>
+               <td><%= list.originalname%></td>
+               <td><a href="/edit/<%= list.id%>">수정</a>
+                <a href="/delete/<%= list.id%>">삭제</a></td>
+            </tr>
+        <%})%>
+        </ul>
+    </body>
+</html>
