@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO LIST</title>
+</head>
+<body>
+    <h2>ToDo LIST</h2>
+    <h3>Welcom to JIMIN TODO</h3>
+    <p>
+    
+    <form action="/todo" method="post">
+        <input type="text" name="value" placeholder="todo">
+        <input type="submit" value="추가">
+    </form>
+
+    <p>
+    <h2>!완료되지 않은 TODO!</h2>
+    <table border='1'>
+        <tr>
+            <td>#</td>
+            <td>TODO</td>
+            <td>작성날짜</td>
+            <td>마감일</td>
+            <td>비고</td>
+        </tr>
+    <% var count = 1%>
+    <% nlist.forEach((list) =>{ %>
+        <tr>
+            <td><%= count %></td>
+            <td><a href="/todo/<%= list.id %>"><%= list.todo %></a></td>
+            <td><%= list.createDate %></td>
+            <td><%= list.deadline %></td>
+            <td>
+                <form action="/complate/<%=list.id%>" method="post">
+                    <input type="submit" value="완료">
+                </form>
+                <form action="/<%=list.id%>?_method=DELETE" method="post">
+                    <input type="submit" value="삭제">
+                </form>
+            </td>
+        </tr>
+        <% count = count + 1%>
+    <%})%>
+    </table>
+
+    <h2>~완료한 TODO~</h2>
+    <table border='1'>
+        <tr>
+            <td>#</td>
+            <td>TODO</td>
+            <td>작성날짜</td>
+            
+            <td>비고</td>
+        </tr>
+    <% var count = 1%>
+    <% list.forEach((list) =>{ %>
+        <tr>
+            <td><%= count %></td>
+            <td><a href="/todo/<%= list.id %>"><%= list.todo %></a></td>
+            <td><%= list.createDate %></td>
+
+            <td>
+                <form action="/<%=list.id%>?_method=DELETE" method="post">
+                    <input type="submit" value="삭제">
+                </form>
+            </td>
+        </tr>
+        <% count = count + 1%>
+    <%})%>
+    </table>
+
+</body>
+</html>

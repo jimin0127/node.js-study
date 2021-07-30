@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO LIST</title>
+</head>
+<body>
+    <h1>Detail</h1>
+    <a href="/">list보기</a>
+    <table border='1'>
+        <tr>
+            <td>Todo</td>
+            <td><%= list.todo %></td>
+        </tr>
+        <tr>
+            <td>내용</td>
+            <td>
+                <form action="/content/<%=list.id%>" method="post">
+                <input type="text" name="value">
+                <input type="submit" value="추가">
+                </form>
+                <ul>
+                <% list.content.forEach((c) => { %>
+                    <li><%= c %></li>
+                <%}) %>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>등록일</td>
+            <td><%= list.createDate %></td>
+        </tr>
+        <tr>
+            <td>마감일</td>
+            <td><%= list.deadline %>
+                <form action="/deadline/<%= list.id %>" method="post">
+                    <h5>마감일 설정</h5>
+                    <input type="date" name="date">
+                    <input type="submit" value="설정하기">
+                </form>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
